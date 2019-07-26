@@ -18,15 +18,15 @@
         <div class="card-body login-card-body">
         <p class="login-box-msg">Ingrese sus datos para iniciar sesion</p>
 
-        <form action="" method="post">
+        <form action="controladores/validar-login.php" method="post">
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Usuario">
+            <input name="user" type="text" class="form-control" placeholder="Usuario">
             <div class="input-group-append input-group-text">
                 <span class="fas fa-user"></span>
             </div>
             </div>
             <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Contraseña">
+            <input name="pass" type="password" class="form-control" placeholder="Contraseña">
             <div class="input-group-append input-group-text">
                 <span class="fas fa-lock"></span>
             </div>
@@ -47,3 +47,7 @@
     </div>
 </body>
 </html>
+<?php
+    // $encriptar = crypt('DMV-7367802', '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+    // echo $encriptar;
+?>
