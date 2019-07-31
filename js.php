@@ -35,3 +35,12 @@
 <script src="recursos/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="recursos/dist/js/demo.js"></script>
+<!-- DataTables -->
+<script src="recursos/plugins/datatables/jquery.dataTables.js"></script>
+<script src="recursos/plugins/datatables/dataTables.bootstrap4.js"></script>
+
+<script>
+    $(document).ready( function () {
+      $('#TablaUsuarios').DataTable();
+  } );
+</script>
