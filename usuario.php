@@ -57,7 +57,7 @@
                             </h3>
                             <ul class="nav nav-pills ml-auto p-2">
                                 <li class="nav-item">
-                                    <a class="btn btn-primary text-white">
+                                    <a data-toggle="modal" data-target="#ModalInsertarUsuario" class="btn btn-primary text-white">
                                         <i class="fas fa-plus mr-2"></i>
                                         Nuevo
                                     </a>
@@ -86,16 +86,24 @@
 
                                     foreach ($ListaUsuarios as $key => $Usuario)
                                     {
-                                        $Rol = ($Usuario["Rol"] == "A") ? 'ADMINISTRADOR' : 'VENDEDOR';
+                                      $i++;
+                                      $Rol = ($Usuario["Rol"] == "A") ? 'ADMINISTRADOR' : 'VENDEDOR';
                                         echo '<tr>
-                                                <td>No</td>
+                                                <td>'.$i.'</td>
                                                 <td>'.$Usuario["Nombre"].'</td>
                                                 <td>'.$Usuario["Apellidos"].'</td>
                                                 <td>'.$Usuario["CedulaIdentidad"].'</td>
                                                 <td>'.$Usuario["Fecha"].'</td>
                                                 <td>'.$Rol.'</td>
                                                 <td>'.$Usuario["Estado"].'</td>
-                                                <td>Acciones</td>
+                                                <td>
+                                                  <button data-toggle="modal" data-target="#ModalActualizarUsuario" class="btn btn-info btn-sm">
+                                                  <i class="fas fa-user-edit"></i>
+                                                  </button>
+                                                  <button class="btn btn-danger btn-sm">
+                                                  <i class="fas fa-user-times"></i>
+                                                  </button>
+                                                </td>
                                             </tr>';
                                     }
                                 ?>
@@ -129,3 +137,159 @@
 ?>
 </body>
 </html>
+<!-- Modal Insertar Usuario -->
+<div class="modal fade" id="ModalInsertarUsuario">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Nuevo usuario</h4>
+        <button type="button" data-dismiss="modal" class="close">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <form action="">
+        <div class="modal-body">
+          <p class="text-center">Ingrese los datos del usuario</p>
+          
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <input type="text" placeholder="Ingresar nombre" class="form-control">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <input type="text" placeholder="Ingresar apellidos" class="form-control">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <input type="text" placeholder="Ingresar cedula de identidad" class="form-control">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <input disabled type="text" placeholder="Ingresar usuario" class="form-control">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <select name="" class="form-control">
+              <option selected disabled value="">Seleccionar rol</option>
+              <option value="A">ADMINISTRADOR</option>
+              <option value="V">VENDEDOR</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button data-dismiss="modal" type="button" class="btn btn-default">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+<!-- Modal Insertar Usuario -->
+
+
+<!-- Modal Actualizar Usuario -->
+<div class="modal fade" id="ModalActualizarUsuario">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Actualizar datos del usuario</h4>
+        <button type="button" data-dismiss="modal" class="close">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <form action="">
+        <div class="modal-body">
+          <p class="text-center">Ingrese los datos del usuario</p>
+          
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <input type="text" placeholder="Ingresar nombre" class="form-control">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <input type="text" placeholder="Ingresar apellidos" class="form-control">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <input type="text" placeholder="Ingresar cedula de identidad" class="form-control">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <input type="text" placeholder="Ingresar usuario" class="form-control">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <select name="" class="form-control">
+              <option selected disabled value="">Seleccionar rol</option>
+              <option value="A">ADMINISTRADOR</option>
+              <option value="V">VENDEDOR</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button data-dismiss="modal" type="button" class="btn btn-default">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+<!-- Modal Actualizar Usuario -->

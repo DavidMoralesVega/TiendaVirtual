@@ -41,7 +41,7 @@
                 <a target="_blank" href="https://www.facebook.com/tienda.virtual.dotos" class="btn btn-block btn-primary">
                 <i class="fab fa-facebook mr-2"></i> Busca tu producto
                 </a>
-                <a target="_blank" href="https://api.whatsapp.com/send?phone=59167393564" class="btn btn-block btn-success">
+                <a target="_blank" href="https://api.whatsapp.com/send?phone=59167393564&text=HOLA" class="btn btn-block btn-success">
                 <i class="fab fa-whatsapp mr-2"></i> Realizar pedido
                 </a>
             </div>
