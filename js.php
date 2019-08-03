@@ -39,6 +39,8 @@
 <script src="recursos/plugins/datatables/jquery.dataTables.js"></script>
 <script src="recursos/plugins/datatables/dataTables.bootstrap4.js"></script>
 
+<script src="recursos/scripts/usuario.js"></script>
+
 <script>
     $(document).ready( function () {
       $('#TablaUsuarios').DataTable();

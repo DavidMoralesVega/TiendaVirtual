@@ -10,7 +10,7 @@
 
     $encriptar = crypt($Password, '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
-    if ($Fila["User"] == $Usuario && $Fila["Password"] == $encriptar) {
+    if ($Fila["User"] == $Usuario && $Fila["Password"] == $encriptar && $Fila["Estado"] == 1) {
         
         session_start();
         $_SESSION["Validar"] = true;

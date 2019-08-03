@@ -149,7 +149,7 @@
         </button>
       </div>
 
-      <form action="">
+      <form action="controladores/usuario.controlador.php" method="POST">
         <div class="modal-body">
           <p class="text-center">Ingrese los datos del usuario</p>
           
@@ -159,7 +159,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input type="text" placeholder="Ingresar nombre" class="form-control">
+            <input name="UINombre" id="UINombre" onkeypress="GenerateUser()" onkeyup="Mayus(this);" type="text" placeholder="Ingresar nombre" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -168,7 +168,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input type="text" placeholder="Ingresar apellidos" class="form-control">
+            <input name="UIApellidos" id="UIApellidos" onkeypress="GenerateUser()" onkeyup="Mayus(this);" type="text" placeholder="Ingresar apellidos" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -177,7 +177,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input type="text" placeholder="Ingresar cedula de identidad" class="form-control">
+            <input name="UICedulaIdentidad" id="UICedulaIdentidad" onchange="GenerateUser()" onkeypress="GenerateUser()" onkeyup="Mayus(this);" type="text" placeholder="Ingresar cedula de identidad" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -186,7 +186,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input disabled type="text" placeholder="Ingresar usuario" class="form-control">
+            <input name="UIUser" id="UIUser" type="text" placeholder="Ingresar usuario" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -195,7 +195,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <select name="" class="form-control">
+            <select name="UIRol" class="form-control">
               <option selected disabled value="">Seleccionar rol</option>
               <option value="A">ADMINISTRADOR</option>
               <option value="V">VENDEDOR</option>
