@@ -25,3 +25,44 @@ function GenerateUser() {
 
     document.getElementById("UIUser").value = Codigo;
 }
+
+$(".TablaUsuarios tbody").on("click", "button#btnEditarUsuario", function() {
+
+    var IdUsuario = $(this).attr("IdUsuario");
+
+    var Datos = new FormData();
+    Datos.append("IdUsuario", IdUsuario);
+
+    $.ajax({
+        url: "ajax/usuario.ajax.php",
+        method: "POST",
+        data: Datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+
+            $("#UANombre").val(response["Nombre"]);
+            $("#UAApellidos").val(response["Apellidos"]);
+            $("#UACedulaIdentidad").val(response["CedulaIdentidad"]);
+            $("#UAUser").val(response["User"]);
+
+            // Obsoleto
+            // $("#UARol").html(response["Rol"]);
+
+            if (response["Rol"] == 'A') {
+                $('#UARol option[value="A"]').attr("selected", true);
+            } else {
+                $('#UARol option[value="A"]').attr("selected", false);
+            }
+
+            if (response["Rol"] == 'V') {
+                $('#UARol option[value="V"]').attr("selected", true);
+            } else {
+                $('#UARol option[value="V"]').attr("selected", false);
+            }
+        }
+    })
+
+})

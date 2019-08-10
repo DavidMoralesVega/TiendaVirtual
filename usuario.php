@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="card-body table-responsive">
-                            <table id="TablaUsuarios" class="display table table-bordered table-hover dataTable">
+                            <table id="TablaUsuarios" class="TablaUsuarios display table table-bordered table-hover dataTable">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -97,16 +97,17 @@
                                                 <td>'.$Rol.'</td>
                                                 <td>'.$Usuario["Estado"].'</td>
                                                 <td>
-                                                  <button data-toggle="modal" data-target="#ModalActualizarUsuario" class="btn btn-info btn-sm">
+                                                  <button IdUsuario="'.$Usuario["IdUsuario"].'" id="btnEditarUsuario" data-toggle="modal" data-target="#ModalActualizarUsuario" class="btn btn-info btn-sm">
                                                   <i class="fas fa-user-edit"></i>
                                                   </button>
-                                                  <button class="btn btn-danger btn-sm">
+                                                  <button data-toggle="modal" data-target="#ModalEliminarUsuario" class="btn btn-danger btn-sm">
                                                   <i class="fas fa-user-times"></i>
                                                   </button>
                                                 </td>
                                             </tr>';
                                     }
                                 ?>
+                         
                                     
                                 </tbody>
                             </table>
@@ -238,7 +239,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input type="text" placeholder="Ingresar nombre" class="form-control">
+            <input id="UANombre" name="UANombre" type="text" placeholder="Ingresar nombre" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -247,7 +248,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input type="text" placeholder="Ingresar apellidos" class="form-control">
+            <input id="UAApellidos" name="UAApellidos" type="text" placeholder="Ingresar apellidos" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -256,7 +257,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input type="text" placeholder="Ingresar cedula de identidad" class="form-control">
+            <input id="UACedulaIdentidad" name="UACedulaIdentidad" type="text" placeholder="Ingresar cedula de identidad" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -265,7 +266,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input type="text" placeholder="Ingresar usuario" class="form-control">
+            <input id="UAUser" type="text" placeholder="Ingresar usuario" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -274,7 +275,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <select name="" class="form-control">
+            <select id="UARol" name="UARol" class="form-control">
               <option selected disabled value="">Seleccionar rol</option>
               <option value="A">ADMINISTRADOR</option>
               <option value="V">VENDEDOR</option>
@@ -293,3 +294,28 @@
   </div>
 </div>
 <!-- Modal Actualizar Usuario -->
+
+<!-- MODAL ELIMINAR USUARIO-->
+<div class="modal fade" id="ModalEliminarUsuario">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Eliminar usuario</h4>
+        <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="controladores/usuario.controlador.php" method="POST">
+        <input id="UEIdUsuario" name="UEIdUsuario" type="text">
+        <div class="modal-body">
+          <p id="MensajeEliminar" class="text-center">Ingrese los datos del usuario</p>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-danger">Eliminar</button>
+        </div>
+      </form>
+    </div>
+  </div>                            
+</div>
+<!-- MODAL ELIMINAR USUARIO-->
