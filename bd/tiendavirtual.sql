@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-08-2019 a las 21:49:24
+-- Tiempo de generación: 16-08-2019 a las 20:38:32
 -- Versión del servidor: 5.7.17-log
 -- Versión de PHP: 5.6.30
 
@@ -33,7 +33,7 @@ CREATE TABLE `usuario` (
   `CedulaIdentidad` varchar(15) NOT NULL,
   `User` varchar(25) NOT NULL,
   `Password` text NOT NULL,
-  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Rol` char(1) NOT NULL,
   `Estado` char(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -43,7 +43,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`IdUsuario`, `Nombre`, `Apellidos`, `CedulaIdentidad`, `User`, `Password`, `Fecha`, `Rol`, `Estado`) VALUES
-(1, 'DAVID', 'MORALES VEGA', '7367802', 'DMV-7367802', '$2a$07$asxx54ahjppf45sd87a5au.xbFZDOqYWdpAZh.1S4cgoqGMqHNHkG', '2019-07-26 20:16:28', 'A', '1');
+(2, 'ALEX', 'CABEZAS GUTIERREZ', '7849599', 'ACG-7849599', '$2a$07$asxx54ahjppf45sd87a5aurZGXe1n.8SMn/NVbkXmS5sbV5i8p0di', '2019-08-03 23:29:10', 'A', '1'),
+(3, 'DAVID', 'MORALES VEGA', '7845494', 'DMV-7845494', '$2a$07$asxx54ahjppf45sd87a5auBiSIuUmYYp1JIqHAuxIdt5o2sx140bS', '2019-08-03 23:30:26', 'V', '1');
 
 --
 -- Índices para tablas volcadas
@@ -63,7 +64,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

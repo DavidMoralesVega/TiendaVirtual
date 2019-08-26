@@ -94,13 +94,32 @@
                                                 <td>'.$Usuario["Apellidos"].'</td>
                                                 <td>'.$Usuario["CedulaIdentidad"].'</td>
                                                 <td>'.$Usuario["Fecha"].'</td>
-                                                <td>'.$Rol.'</td>
-                                                <td>'.$Usuario["Estado"].'</td>
-                                                <td>
+                                                <td>'.$Rol.'</td>';
+
+                                        if ($Usuario["Estado"] != 0)
+                                        {
+                                          echo '<td>
+                                                  <button
+                                                  IdUsuario="'.$Usuario["IdUsuario"].'"
+                                                  EstadoUsuario="0"
+                                                  class="btn btn-success btnActivar">ACTIVO</button>
+                                                </td>';
+                                        }
+                                        else
+                                        {
+                                          echo '<td>
+                                                  <button
+                                                  IdUsuario="'.$Usuario["IdUsuario"].'"
+                                                  EstadoUsuario="1"
+                                                  class="btn btn-danger btnActivar">PASIVO</button>
+                                                </td>';
+                                        }
+                                                
+                                        echo  '<td>
                                                   <button IdUsuario="'.$Usuario["IdUsuario"].'" id="btnEditarUsuario" data-toggle="modal" data-target="#ModalActualizarUsuario" class="btn btn-info btn-sm">
                                                   <i class="fas fa-user-edit"></i>
                                                   </button>
-                                                  <button data-toggle="modal" data-target="#ModalEliminarUsuario" class="btn btn-danger btn-sm">
+                                                  <button IdUsuario="'.$Usuario["IdUsuario"].'" id="btnEliminarUsuario" data-toggle="modal" data-target="#ModalEliminarUsuario" class="btn btn-danger btn-sm">
                                                   <i class="fas fa-user-times"></i>
                                                   </button>
                                                 </td>
@@ -178,8 +197,9 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input name="UICedulaIdentidad" id="UICedulaIdentidad" onchange="GenerateUser()" onkeypress="GenerateUser()" onkeyup="Mayus(this);" type="text" placeholder="Ingresar cedula de identidad" class="form-control">
+            <input name="UICedulaIdentidad" id="UICedulaIdentidad" onchange="ValidarCI()" onkeypress="GenerateUser()" onkeyup="Mayus(this);" type="text" placeholder="Ingresar cedula de identidad" class="form-control">
           </div>
+          
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -229,17 +249,17 @@
         </button>
       </div>
 
-      <form action="">
+      <form action="controladores/usuario.controlador.php" method="POST">
         <div class="modal-body">
           <p class="text-center">Ingrese los datos del usuario</p>
-          
+          <input name="UAIdUsuario" type="hidden" id="UAIdUsuario">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text">
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input id="UANombre" name="UANombre" type="text" placeholder="Ingresar nombre" class="form-control">
+            <input onkeyup="Mayus(this)" id="UANombre" name="UANombre" type="text" placeholder="Ingresar nombre" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -248,7 +268,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input id="UAApellidos" name="UAApellidos" type="text" placeholder="Ingresar apellidos" class="form-control">
+            <input onkeyup="Mayus(this)" id="UAApellidos" name="UAApellidos" type="text" placeholder="Ingresar apellidos" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -257,7 +277,7 @@
                 <i class="fas fa-user"></i>
               </span>
             </div>
-            <input id="UACedulaIdentidad" name="UACedulaIdentidad" type="text" placeholder="Ingresar cedula de identidad" class="form-control">
+            <input onkeyup="Mayus(this)" id="UACedulaIdentidad" name="UACedulaIdentidad" type="text" placeholder="Ingresar cedula de identidad" class="form-control">
           </div>
 
           <div class="input-group mb-3">
@@ -285,11 +305,9 @@
         </div>
         <div class="modal-footer justify-content-between">
           <button data-dismiss="modal" type="button" class="btn btn-default">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Registrar</button>
+          <button type="submit" class="btn btn-primary">Actualizar</button>
         </div>
       </form>
-
-
     </div>
   </div>
 </div>
@@ -306,7 +324,7 @@
         </button>
       </div>
       <form action="controladores/usuario.controlador.php" method="POST">
-        <input id="UEIdUsuario" name="UEIdUsuario" type="text">
+        <input id="UEIdUsuario" name="UEIdUsuario" type="hidden">
         <div class="modal-body">
           <p id="MensajeEliminar" class="text-center">Ingrese los datos del usuario</p>
         </div>

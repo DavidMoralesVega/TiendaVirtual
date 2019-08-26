@@ -43,6 +43,10 @@ $(".TablaUsuarios tbody").on("click", "button#btnEditarUsuario", function() {
         dataType: "json",
         success: function(response) {
 
+            // IdUsuario
+
+            $("#UAIdUsuario").val(response["IdUsuario"]);
+
             $("#UANombre").val(response["Nombre"]);
             $("#UAApellidos").val(response["Apellidos"]);
             $("#UACedulaIdentidad").val(response["CedulaIdentidad"]);
@@ -66,3 +70,88 @@ $(".TablaUsuarios tbody").on("click", "button#btnEditarUsuario", function() {
     })
 
 })
+
+$(".TablaUsuarios tbody").on("click", "button#btnEliminarUsuario", function() {
+
+    var IdUsuario = $(this).attr("IdUsuario");
+
+    var Datos = new FormData();
+    Datos.append("IdUsuario", IdUsuario);
+
+    $.ajax({
+        url: "ajax/usuario.ajax.php",
+        method: "POST",
+        data: Datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+            $("#UEIdUsuario").val(response["IdUsuario"]);
+            var mensaje = '¿Esta seguro de eliminar a :' + response["Nombre"] + ' ' + response["Apellidos"] + '?';
+            $("#MensajeEliminar").html(mensaje);
+        }
+    })
+});
+$(".btnActivar").click(function() {
+    var IdUsuario = $(this).attr("IdUsuario");
+    var EstadoUsuario = $(this).attr("EstadoUsuario");
+
+    var Datos = new FormData();
+    Datos.append("IdUsuarioActivar", IdUsuario);
+    Datos.append("EstadoUsuarioActivar", EstadoUsuario);
+
+    $.ajax({
+        url: "ajax/usuario.ajax.php",
+        method: "POST",
+        data: Datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            console.log(response);
+        }
+    })
+
+    if (EstadoUsuario == 0) {
+        $(this).removeClass('btn-success');
+        $(this).addClass('btn-danger');
+        $(this).html('PASIVO');
+        $(this).attr('EstadoUsuario', 1);
+    } else {
+        $(this).removeClass('btn-danger');
+        $(this).addClass('btn-success');
+        $(this).html('ACTIVO');
+        $(this).attr('EstadoUsuario', 0);
+    }
+
+})
+
+// Validar usuario repetido (CedulaIdentidad)
+function ValidarCI() {
+
+    $(".alert").remove();
+
+    var CI = $("#UICedulaIdentidad").val();
+
+    var DatosValidar = new FormData();
+    DatosValidar.append("CedulaIdentidad", CI);
+
+    $.ajax({
+        url: "ajax/usuario.ajax.php",
+        method: "POST",
+        data: DatosValidar,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(response) {
+            if (response) {
+                $("#UICedulaIdentidad").parent().after('<div class="alert alert-danger">' +
+                    'Este usuario ya existe en la base de datos' +
+                    '</div>');
+                $("#UICedulaIdentidad").val("");
+            }
+        }
+    })
+}
